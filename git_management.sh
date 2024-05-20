@@ -89,22 +89,24 @@ function initialize_repo() {
     echo "Repository '$REPO_NAME' created and files uploaded successfully."
 }
 
-# Main script logic
-echo "Do you need to initialize a new repository? (y/n)"
-read -r NEED_INIT
-if [ "$NEED_INIT" = "y" ]; then
-    initialize_repo
-fi
+# Main script logic for testing purposes
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "Do you need to initialize a new repository? (y/n)"
+    read -r NEED_INIT
+    if [ "$NEED_INIT" = "y" ]; then
+        initialize_repo
+    fi
 
-echo "Do you need to pull all repositories in the current directory? (y/n)"
-read -r NEED_PULL
-if [ "$NEED_PULL" = "y" ]; then
-    git_pull_all
-fi
+    echo "Do you need to pull all repositories in the current directory? (y/n)"
+    read -r NEED_PULL
+    if [ "$NEED_PULL" = "y" ]; then
+        git_pull_all
+    fi
 
-echo "Do you need to push changes to the repository? (y/n)"
-read -r NEED_PUSH
-if [ "$NEED_PUSH" = "y" ]; then
-    git_push
+    echo "Do you need to push changes to the repository? (y/n)"
+    read -r NEED_PUSH
+    if [ "$NEED_PUSH" = "y" ]; then
+        git_push
+    fi
 fi
 
